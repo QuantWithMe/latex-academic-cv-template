@@ -2,8 +2,7 @@
 
 A clean, compact, single-file LaTeX template for academic, research-oriented, and early-career CVs.
 
-The template is designed for students, research assistants, PhD applicants, and early-career researchers 
-who want a simple CV that is easy to edit, compile, and publish.
+The template is freely usable by anyone who wants to adapt it for personal, academic, or professional purposes.
 
 ## Features
 
@@ -12,7 +11,7 @@ who want a simple CV that is easy to edit, compile, and publish.
 - Compact one-page design
 - Custom commands for sections, entries, and bullet points
 - Minimal dependencies
-- Suitable for research, academic, and quantitative finance profiles
+- Suitable for academic, research-oriented, and quantitative profiles
 
 ## Preview
 
@@ -22,12 +21,11 @@ A compiled example is available in [`cv.pdf`](cv.pdf).
 
 - `main.tex`: LaTeX source file
 - `cv.pdf`: compiled example CV
-- `.gitignore`: ignores common LaTeX auxiliary files
 - `README.md`: repository documentation
 
 ## Requirements
 
-The template can be compiled with a standard LaTeX distribution such as Overleaf.
+The template can be compiled with a standard LaTeX distribution or directly on Overleaf.
 
 Main LaTeX packages used:
 
