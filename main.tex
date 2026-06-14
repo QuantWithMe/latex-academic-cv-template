@@ -1,0 +1,393 @@
+
+
+
+% LaTeX CV BUILDER
+
+
+
+% Use the standard LaTeX article class.
+% Options:
+% - 10pt sets the base font size.
+% - letterpaper sets the paper size.
+
+\documentclass[10pt,letterpaper]{article}
+
+
+
+% Load the geometry package to control page margins.
+% CVs usually need narrower margins than ordinary academic papers.
+
+\usepackage[
+    left=1.5cm,    % Left margin
+    right=1.5cm,   % Right margin
+    top=1cm,     % Top margin
+    bottom=1.5cm   % Bottom margin
+]{geometry}
+
+
+
+% Use T1 font encoding.
+% This improves hyphenation and output quality for European characters.
+
+\usepackage[T1]{fontenc}
+
+
+
+% Use UTF-8 input encoding.
+% This allows typing accented characters directly in the source file.
+
+\usepackage[utf8]{inputenc}
+
+
+
+% Use a Times-like serif font.
+% It is compact, professional, and has a less pronounced italic style than Latin Modern.
+
+\usepackage{libertine}
+
+
+
+% Load Font Awesome icons for the contact line.
+% This provides icons for location, email, phone, LinkedIn, GitHub, etc.
+
+\usepackage{fontawesome5}
+
+
+
+% Improve character spacing and overall typography.
+
+\usepackage{microtype}
+
+
+
+% Load hyperref to make links clickable in the PDF.
+% The hidelinks option removes colored boxes around links.
+
+\usepackage[hidelinks]{hyperref}
+
+
+
+% Load enumitem to customize lists.
+% This is useful for making CV bullet points compact and well aligned.
+
+\usepackage{enumitem}
+
+
+
+% Load tabularx for flexible-width tables.
+% This is useful for skills sections or structured information.
+
+\usepackage{tabularx}
+
+
+
+% Enable text colors.
+
+\usepackage{xcolor}
+
+
+
+% Remove paragraph indentation.
+% CV entries should align flush left rather than use paragraph indents.
+
+\setlength{\parindent}{0pt}
+
+
+
+
+% Remove extra vertical space between paragraphs.
+% Spacing will be controlled manually through CV commands and environments.
+
+\setlength{\parskip}{0pt}
+
+
+
+% Define a custom command for CV section titles.
+% The command prints the section title in bold uppercase text,
+% adds a small amount of vertical space above it,
+% and draws a horizontal rule below it.
+
+\newcommand{\cvsection}[1]{%
+    \vspace{5pt}%
+    {\large\textbf{\MakeUppercase{#1}}}%
+    \vspace{2pt}
+    \hrule%
+    \vspace{5pt}%
+}
+
+
+
+% Define a compact CV entry with two aligned rows.
+% Arguments:
+% #1 = institution or organization
+% #2 = location
+% #3 = degree, role, or position
+% #4 = dates
+
+\newcommand{\cventry}[4]{%
+    \vspace{4pt}%
+    \noindent
+    \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+        \large{\textbf{#1}} & \textbf{#2} \\
+        \textit{#3} & \textit{#4}
+    \end{tabular*}%
+    \par\vspace{-2pt}%
+}
+
+
+
+% Define a compact bullet-point environment for CV items.
+% topsep controls the space between the entry heading and the first bullet.
+
+\newenvironment{cvitems}{%
+    \begin{itemize}[
+        leftmargin=1.5em,
+        itemsep=2pt,
+        topsep=5pt,
+        parsep=0pt,
+        partopsep=0pt
+    ]
+}{%
+    \end{itemize}
+}
+
+
+
+% Footer management.
+
+
+
+% This is used to place the personal data authorization line at the bottom.
+
+\usepackage{fancyhdr}
+
+% Use a custom page style
+\pagestyle{fancy}
+
+% Clear default header and footer fields.
+
+\fancyhf{}
+
+% Remove header and footer rules.
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Footer text.
+% The authorization line is set in grey to make it visually secondary.
+
+\fancyfoot[C]{%
+    \raisebox{5pt}{%
+        \parbox{1\textwidth}{%
+            \centering
+            \scriptsize
+            \textcolor{gray}{%
+                I authorize the processing of my personal data in accordance with local law.\\
+                Details of ongoing or unpublished research projects are intentionally limited in accordance with research confidentiality and academic integrity standards.
+            }%
+        }%
+    }%
+}
+
+
+
+% End of preamble
+
+
+
+\begin{document}
+
+
+
+% CV header with full name and contact information.
+% The header is centered and kept minimal for readability.
+
+\begin{center}
+
+
+
+    % Full name.
+    % \Huge makes the name visibly larger than the rest of the CV.
+    % \textbf makes it bold.
+    % \\[5pt] generates a small vertical space between the name and the contact line.
+    
+    {\Huge \textbf{Pierluigi M. Urbano}} \\[5pt]
+
+    
+
+    % Contact line.
+    % \href is used for clickable email and LinkedIn links.
+    % Icons are used to make the header more visually structured.
+    \small \faIcon{map-marker-alt} \space Milan, Italy \& London, UK
+    \quad
+    \faIcon{envelope} \space \href{mailto:pierluigimaria.urbano@gmail.com}{pierluigimaria.urbano@gmail.com}
+    \quad
+    \faIcon{phone} \space +39 391 155 5126
+    \quad
+    \faIcon{linkedin} \space \href{https://www.linkedin.com/in/pierluigiurbano/}{Pierluigi Urbano}
+    \vspace{-4pt}
+    
+    
+
+\end{center}
+
+
+
+% EDUCATION section
+
+\cvsection{Education}
+
+\cventry
+{University College London (UCL)}
+{London, UK}
+{MSc in Computational Finance, Incoming}
+{Sep 2026 -- Jul 2027}
+
+\begin{cvitems}
+
+    \item \textbf{Relevant coursework:} Numerical Methods for Finance, Financial Engineering, Machine Learning, Data Science.
+    
+\end{cvitems}
+
+\cventry
+{Bocconi University}
+{Milan, Italy}
+{BSc in Economics and Finance \normalfont{-- \textbf{GPA:} 29.5/30}}
+{Sep 2023 -- Jul 2026}
+
+\begin{cvitems}
+
+    \item \textbf{Thesis:} NLP-based analysis of conference-call linguistic complexity and subsequent volatility for EURO STOXX 50 firms; supervised by Professor Maurizio Dallocchio.
+    
+    \item \textbf{Relevant coursework:} Mathematics I--II, Statistics, Quantitative Methods for Finance, Computer Science, Financial Markets.
+    
+\end{cvitems}
+
+\cventry
+{Tsinghua University}
+{Beijing, China}
+{Exchange Semester \normalfont{-- \textbf{GPA:} 4.0/4.0}}
+{Sep 2025 -- Jan 2026}
+
+\begin{cvitems}
+
+    \item \textbf{Relevant coursework:} Corporate Finance, Financial Statement Analysis, Data Modelling and Simulation Analysis.
+    
+    \item Selected after achieving the highest GPA among Bocconi students assigned to exchange programmes in China.
+    
+\end{cvitems}
+
+\cventry
+{London School of Economics (LSE)}
+{London, UK}
+{Intensive Summer School in Finance}
+{Jul 2024 -- Aug 2024}
+
+\begin{cvitems}
+
+    \item \textbf{Grade:} A+, awarded to the top 7\% of participants.
+    
+    \item \textbf{Studied topics:} asset pricing, portfolio theory, derivatives, and corporate finance.
+    
+\end{cvitems}
+
+
+
+% RESEARCH EXPERIENCE section
+
+\cvsection{Research Experience}
+
+\cventry
+{Department of Statistics, University of Warwick}
+{Coventry, UK}
+{Summer Research Intern in Statistics, Incoming}
+{Jul 2026 -- Sep 2026}
+
+\begin{cvitems}
+
+    \item Selected for an eight-week in-person PhD-oriented summer research programme in the Department of Statistics.
+    
+    \item Expected to conduct supervised research in probability or mathematical finance; project and supervisor to be confirmed.
+    
+\end{cvitems}
+
+\cventry
+{IGIER Research Centre, Bocconi University}
+{Milan, Italy}
+{Research Assistant to Professor Barbara Rindi}
+{Mar 2026 -- Present}
+\begin{cvitems}
+
+    \item Constructed and analysed Python/R datasets on long-term asset return assumptions, comparing modelling frameworks across asset classes and financial markets.
+
+    \item Cleaned, merged, and validated financial and macroeconomic time series; implemented empirical analyses and robustness checks.
+
+    \item Synthesised methodology differences across leading asset managers and supported the preparation of research outputs in LaTeX.
+
+\end{cvitems}
+
+
+
+% PROFESSIONAL EXPERIENCE section
+
+\cvsection{Professional Experience}
+
+\cventry
+{Deloitte}
+{Milan, Italy}
+{M\&A Summer Analyst, Financial Advisory}
+{Jun 2025 -- Aug 2025}
+\begin{cvitems}
+
+    \item Conducted financial due diligence on target companies for international private equity funds, supporting the acquisition process.
+    
+    \item Analysed earnings quality, working capital dynamics, and net financial position using Excel, Italian GAAP, and IFRS.
+    
+\end{cvitems}
+
+\cventry
+{Starting Finance Club Bocconi}
+{Milan, Italy}
+{Commodity and Forex Analyst}
+{Sep 2024 -- Sep 2025}
+\begin{cvitems}
+
+    \item Conducted research on the Merton Jump Diffusion Model for option pricing and the Inelastic Market Hypothesis.
+    
+    \item Applied Bloomberg, Python, and Excel to develop data-driven investment analyses for a virtual commodity and forex portfolio.
+    
+\end{cvitems}
+
+
+
+% SKILLS, LANGUAGES, AND INTERESTS section
+
+\cvsection{Skills, Languages, and Interests}
+
+% Final compact section with technical skills, languages, certifications,
+% activities, and interests. The tabularx environment allows the right column
+% to wrap automatically while keeping category labels aligned.
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+
+\textbf{Programming} &
+Python: pandas, NumPy, scikit-learn, etc. (advanced); R, MATLAB (intermediate); JavaScript, C++ (beginner). \\[2pt]
+
+\textbf{Data and Finance} &
+Bloomberg, LSEG Workspace, Excel (proficient); Orbis by Moody's, Arena Simulation (advanced). \\[2pt]
+
+\textbf{Languages} &
+Italian (native); English (fluent: C2 -- IELTS 8.5 / 9); Spanish (intermediate: B1); Chinese (beginner: A1). \\[2pt]
+
+\textbf{Certifications} &
+Bloomberg Market Concepts; Bloomberg Finance Fundamentals; ICDL Office and Computer Essentials. \\[2pt]
+
+\textbf{Activities} &
+Blood donor at AVIS; Head of Administration, Bocconi Students Opera Society. \\[2pt]
+
+\textbf{Interests} &
+Philosophy (Logic and Political philosophy), Geopolitics, Strategic games (Chess and checkers) and Opera.
+
+\end{tabularx}
+
+
+\end{document}
